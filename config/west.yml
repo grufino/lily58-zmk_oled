@@ -1,0 +1,16 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: PandaKBLab
+      url-base: https://github.com/PandaKBLab
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: zmk-for-PandaKB
+      remote: PandaKBLab
+      revision: PandaKB_Lily58
+  self:
+    path: config
