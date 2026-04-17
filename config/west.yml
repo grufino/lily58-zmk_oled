@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: 354cff9cc14e26bbf62d34ae72f24bccbaa69b0b
+      revision: 354cff9c36b49eee6abbb8a61e6b927539aebbf2
       import: app/west.yml
     - name: zmk-for-PandaKB
       remote: PandaKBLab
