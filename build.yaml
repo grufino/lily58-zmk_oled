@@ -9,18 +9,18 @@
 # shield: [ "corne_left", "corne_right" ]
 # include:
 #   - board: bdn9_rev2
-#   - board: nice_nano_v2//zmk
+#   - board: nice_nano@2.0.0
 #     shield: reviung41
-#   - board: nice_nano_v2//zmk
+#   - board: nice_nano@2.0.0
 #     shield: corne_left
 #     cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
 #     artifact-name: corne_left_with_logging
 #
 ---
 include:
-  - board: nice_nano_v2//zmk
+  - board: nice_nano@2.0.0
     shield: Lily58_L
-  - board: nice_nano_v2//zmk
+  - board: nice_nano@2.0.0
     shield: Lily58_R
-  - board: nice_nano_v2//zmk
+  - board: nice_nano@2.0.0
     shield: settings_reset
