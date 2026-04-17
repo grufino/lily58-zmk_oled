@@ -22,3 +22,5 @@ include:
     shield: Lily58_L
   - board: nice_nano_v2
     shield: Lily58_R
+  - board: nice_nano_v2
+    shield: settings_reset
