@@ -9,8 +9,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0
+      revision: v0.3
       import: app/west.yml
+    # Pinned to commit (not branch) because PandaKB force-pushes "renew"
+    # commits that can break builds without warning. Bump manually when
+    # you want to pick up shield-side changes.
     - name: zmk-for-PandaKB
       remote: PandaKBLab
       revision: a822044
