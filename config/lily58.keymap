@@ -18,6 +18,15 @@
 #define ADJUST 3
 
 / {
+    // Right knob as its own sensor (index 1); pins from the PandaKB Lily58 shield.
+    // Status is set per half in lily58_left.overlay / lily58_right.overlay.
+    right_encoder: encoder_right {
+        compatible = "alps,ec11";
+        a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+    };
+
     behaviors {
         // Encoder rotation -> mouse wheel scroll (clockwise scrolls down)
         scroll_encoder: scroll_encoder {
@@ -130,4 +139,8 @@
             >;
         };
     };
+};
+
+&sensors {
+    sensors = <&left_encoder &right_encoder>;
 };
