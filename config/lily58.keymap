@@ -28,12 +28,15 @@
     };
 
     behaviors {
-        // Encoder rotation -> mouse wheel scroll (clockwise scrolls down)
+        // Encoder rotation -> mouse wheel scroll (clockwise scrolls down).
+        // &msc values are a speed (units/s) emitted every 16ms tick, so the
+        // default SCRL_* (10) rounds to 0 on a short encoder tap. 20ms fits
+        // exactly one tick; 100 * 0.016 = 1.6 -> 1 wheel step per detent.
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-            tap-ms = <30>;
+            bindings = <&msc MOVE_Y(-100)>, <&msc MOVE_Y(100)>;
+            tap-ms = <20>;
         };
     };
 
