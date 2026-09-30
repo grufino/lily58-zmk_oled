@@ -7,7 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/pointing.h>
 
 // #include <dt-bindings/zmk/rgb.h>
 // #include <dt-bindings/zmk/ext_power.h>
@@ -25,19 +24,6 @@
         a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <80>;
-    };
-
-    behaviors {
-        // Encoder rotation -> mouse wheel scroll (clockwise scrolls down).
-        // &msc values are a speed (units/s) emitted every 16ms tick, so the
-        // default SCRL_* (10) rounds to 0 on a short encoder tap. 40ms spans
-        // two ticks at 100 * 0.016 = 1.6 each -> ~3 wheel steps per detent.
-        scroll_encoder: scroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_Y(-100)>, <&msc MOVE_Y(100)>;
-            tap-ms = <40>;
-        };
     };
 
     // Activate ADJUST layer by pressing raise and lower
@@ -74,7 +60,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp C_VOL_UP C_VOL_DN>,
-                <&scroll_encoder>;
+                <&inc_dec_kp PG_UP PG_DN>;
         };
 
         lower_layer {
@@ -112,7 +98,7 @@
             //                |      |       |       |      |      |  |      |      |      |       |
 
             bindings = <
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &msc SCRL_UP  &msc SCRL_DOWN  &trans    &trans     &trans   &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &trans     &trans    &trans    &trans     &trans   &trans
 &trans      &kp INS       &kp PSCRN     &kp K_CMENU   &trans        &trans                          &kp PG_UP  &trans    &kp UP    &trans     &kp N0   &kp BACKSPACE
 &trans      &kp LALT      &kp LCTRL     &kp LSHFT     &trans        &kp CLCK                        &kp PG_DN  &kp LEFT  &kp DOWN  &kp RIGHT  &kp DEL  &kp BSPC
 &trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans    &trans  &trans     &trans    &trans    &trans     &trans   &trans
